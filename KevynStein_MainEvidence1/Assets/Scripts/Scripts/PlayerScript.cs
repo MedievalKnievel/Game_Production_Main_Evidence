@@ -295,11 +295,6 @@ public class PlayerScript : MonoBehaviour
         currentOxy = Mathf.Clamp(currentOxy,0,oxygenMax);
     }
 
-    // private void OnCollisionEnter(Collision col)
-    // {
-        
-    // }
-
     IEnumerator ReturnObjToPool(GameObject obj)
     {
         yield return new WaitForSeconds(5);
