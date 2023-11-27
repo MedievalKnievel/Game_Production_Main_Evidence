@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
 {
     public float speed = 8.0f;
     public float weaponSpeed = 10f;
-    public float jumpForce = 1.0f;
+    public float jumpForce = 1.5f;
     private Vector2 movementInput;
     private bool grounded = true;
     private bool bubble = false;
@@ -55,6 +55,7 @@ public class PlayerScript : MonoBehaviour
     
     void FixedUpdate()
     {
+        print(bubble);
        Gravity();
        PlayerMovement();
        ObjMove();
@@ -62,6 +63,7 @@ public class PlayerScript : MonoBehaviour
        if (!bubble)
         {
             decayOxy();
+            print("Not in the bubble");
         }
 
         if(currentOxy<=0)
@@ -100,9 +102,38 @@ public class PlayerScript : MonoBehaviour
 
     public void onJump(InputAction.CallbackContext context)
     {
+        if(bubble)
+        {
         if(context.started && grounded)
         {
             velocity.y = Mathf.Sqrt(jumpForce * fallspeed * gravity);
+        }
+        }
+        if(!bubble)
+        {
+            if(context.performed)
+            {
+                print("Jump pressed");
+                velocity.y = jumpForce;
+            }else if(context.canceled)
+            {
+                velocity.y = -jumpForce/2;
+            }
+        }
+    }
+
+    public void onDown(InputAction.CallbackContext context)
+    {
+        if(!bubble)
+        {
+            if(context.performed)
+            {
+                print("Jump pressed");
+                velocity.y = -jumpForce;
+            }else if(context.canceled)
+            {
+                velocity.y = -jumpForce/2;
+            }
         }
     }
 
@@ -156,16 +187,10 @@ public class PlayerScript : MonoBehaviour
 
     private void Gravity()
     {
-        grounded = Physics.CheckSphere(ground.position, distanceToGround, groundMask);
-
         if(bubble)
         {
-            fallspeed = -2f;
-        }
-        if(!bubble)
-        {
-            fallspeed = -20f;
-        }
+        grounded = Physics.CheckSphere(ground.position, distanceToGround, groundMask);
+        fallspeed = -2f;
         if(grounded && velocity.y < 0)
         {
             velocity.y = fallspeed;
@@ -173,6 +198,12 @@ public class PlayerScript : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+        }
+        else if(!bubble)
+        {
+            controller.Move(velocity * Time.deltaTime);
+            print(velocity);
+        }
     }
 
     private void ObjMove()
