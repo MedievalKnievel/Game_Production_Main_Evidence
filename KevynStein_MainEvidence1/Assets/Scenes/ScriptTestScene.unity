@@ -1148,10 +1148,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1054446470}
-    - targetCorrespondingSourceObject: {fileID: 6448182006090688161, guid: 4f3a5d6696729cb4fa5e64c8dcc0f9a8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1054446472}
   m_SourcePrefab: {fileID: 100100000, guid: 4f3a5d6696729cb4fa5e64c8dcc0f9a8, type: 3}
 --- !u!1 &1054446469 stripped
 GameObject:
@@ -1193,27 +1189,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!320 &1054446472
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1054446469}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 493173b095f76014ea6009a0446d03d5, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -8770933194337930120, guid: 493173b095f76014ea6009a0446d03d5, type: 2}
-    value: {fileID: 1054446470}
-  m_ExposedReferences:
-    m_References:
-    - ff70beb2b6c36414ea1aa2776dcf7591: {fileID: 0}
-    - 779fc9e1887f339438ebfd4ac6aeb442: {fileID: 0}
 --- !u!1 &1230015915
 GameObject:
   m_ObjectHideFlags: 0
