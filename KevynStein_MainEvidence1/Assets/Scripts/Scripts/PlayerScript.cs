@@ -55,7 +55,8 @@ public class PlayerScript : MonoBehaviour
     
     void FixedUpdate()
     {
-        print(bubble);
+       print(bubble);
+       print(grounded);
        Gravity();
        PlayerMovement();
        ObjMove();
